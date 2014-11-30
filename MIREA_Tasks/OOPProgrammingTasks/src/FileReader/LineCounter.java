@@ -1,15 +1,12 @@
 package FileReader;
 
 public class LineCounter implements CommandInterpreter {
-	private int count;
-	public LineCounter() {
-		count = 0;
-	}
+	private int lineCount = 0;
 	@Override
 	public void processCommand(String str) {
-		count++;
+		lineCount++;
 	}
-	public String output() {
-		return String.valueOf(count);
+	public int getCount() {
+		return lineCount;
 	}
 }
