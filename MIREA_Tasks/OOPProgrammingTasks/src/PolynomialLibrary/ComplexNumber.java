@@ -18,6 +18,7 @@ public class ComplexNumber extends NumberField<ComplexNumber> {
 	
 	@Override
 	public String toString() {
+		if (I < 0) return "{x:"+R+"-i*"+(-I)+"}";
 		return "{x:"+R+"+i*"+I+"}";
 	}
 

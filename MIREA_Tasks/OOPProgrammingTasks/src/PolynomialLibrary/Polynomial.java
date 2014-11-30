@@ -42,13 +42,12 @@ public class Polynomial<N extends NumberField<N>> {
 		for (int i = 0; i < coefficients.size(); i++) {
 			for (int j = 0; j < p.coefficients.size(); j++) {
 				N x1 = coefficients.get(i);
-				N x2 = p.coefficients.get(i);
+				N x2 = p.coefficients.get(j);
 				int c = i + j;
-				N x0 = result.coefficients.get(c);
-				if (x0 == null) {
-					result.coefficients.set(c, x1.multiply(x2));
+				if (result.coefficients.size() <= c) {
+					result.coefficients.add(c, x1.multiply(x2));
 				} else {
-					result.coefficients.set(c, x0.add(x1.multiply(x2)));
+					result.coefficients.set(c, result.coefficients.get(c).add(x1.multiply(x2)));
 				}
 			}
 		}
@@ -69,6 +68,14 @@ public class Polynomial<N extends NumberField<N>> {
 			result = a.add(result.multiply(x));
 		}
 		return result;
+	}
+	public String toString() {
+		String s = coefficients.get(0)+"+";
+		for (int i = 1; i < coefficients.size(); i++) {
+			N n = coefficients.get(i);
+			s += n+"*x^"+i+"+";
+		}
+		return s.substring(0, s.length() - 1);
 	}
 	
 }
