@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.Iterator;
 
 public class NaturalNumbers implements Iterator<BigInteger> {
-	private BigInteger x = BigInteger.ZERO;
+	private BigInteger x = BigInteger.ONE;
 	@Override
 	public boolean hasNext() {
 		// TODO Auto-generated method stub
@@ -14,14 +14,14 @@ public class NaturalNumbers implements Iterator<BigInteger> {
 	@Override
 	public BigInteger next() {
 		// TODO Auto-generated method stub
+		BigInteger previous = x;
 		x = x.add(BigInteger.ONE);
-		return x;
+		return previous;
 	}
 
 	@Override
 	public void remove() {
-		// TODO Auto-generated method stub
-		
+		throw new UnsupportedOperationException("No array is lying under this iterator.");
 	}
 
 }
